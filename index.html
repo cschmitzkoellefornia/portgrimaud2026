@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klassenfahrt Côte d'Azur 2026 | APG Köln</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azure: #0077b6;
+    --azure-light: #00b4d8;
+    --azure-pale: #caf0f8;
+    --sand: #f8f4ee;
+    --sand-dark: #ede8df;
+    --coral: #e76f51;
+    --coral-light: #f4a261;
+    --text-dark: #1a1a2e;
+    --text-mid: #3a3a5c;
+    --text-light: #6c7a9c;
+    --white: #ffffff;
+    --shadow: 0 4px 24px rgba(0,119,182,0.10);
+    --shadow-lg: 0 8px 40px rgba(0,119,182,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--sand);
+    color: var(--text-dark);
+    min-height: 100vh;
+  }
+
+  /* === HEADER === */
+  header {
+    background: linear-gradient(135deg, var(--azure) 0%, #023e8a 60%, #03045e 100%);
+    color: white;
+    padding: 60px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+  /* Wave at bottom */
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 48px;
+    background: var(--sand);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 999px;
+    padding: 6px 18px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    backdrop-filter: blur(4px);
+  }
+
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 14px;
+    position: relative;
+  }
+
+  header .subtitle {
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.85;
+    margin-bottom: 28px;
+  }
+
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .meta-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 999px;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    backdrop-filter: blur(6px);
+  }
+
+  /* === MAIN CONTENT === */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  /* === INFO BANNER === */
+  .info-banner {
+    background: white;
+    border-left: 4px solid var(--azure-light);
+    border-radius: 0 12px 12px 0;
+    padding: 16px 20px;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow);
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+  .info-banner strong { color: var(--azure); }
+
+  /* === CAMP INFO CARD === */
+  .camp-card {
+    background: linear-gradient(135deg, var(--azure) 0%, var(--azure-light) 100%);
+    color: white;
+    border-radius: 18px;
+    padding: 28px;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow-lg);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 600px) { .camp-card { grid-template-columns: 1fr; } }
+  .camp-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+    grid-column: 1/-1;
+  }
+  .camp-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .camp-detail .label {
+    font-size: 0.75rem;
+    opacity: 0.75;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+  }
+  .camp-detail .value {
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  /* === SECTION TITLE === */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    color: var(--text-dark);
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--azure-pale);
+  }
+
+  /* === DAY CARD === */
+  .day-card {
+    background: white;
+    border-radius: 18px;
+    margin-bottom: 28px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .day-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    background: var(--sand-dark);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .day-number {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--azure);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .day-number .tag { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.8; }
+  .day-number .num { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; line-height: 1; }
+
+  .day-title-block { flex: 1; }
+  .day-title-block .weekday {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--azure);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .day-title-block .date {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-dark);
+  }
+  .day-title-block .day-desc {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 400;
+  }
+
+  /* === EVENTS === */
+  .events-list {
+    padding: 8px 0;
+  }
+
+  .event {
+    display: grid;
+    grid-template-columns: 80px 44px 1fr;
+    gap: 0 12px;
+    padding: 14px 24px;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    align-items: start;
+    transition: background 0.15s ease;
+  }
+  .event:last-child { border-bottom: none; }
+  .event:hover { background: rgba(0,119,182,0.03); }
+
+  .event-time {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-light);
+    padding-top: 3px;
+    line-height: 1.3;
+  }
+  .event-time .approx {
+    font-size: 0.7rem;
+    font-weight: 400;
+    display: block;
+    color: var(--text-light);
+    opacity: 0.7;
+  }
+
+  .event-icon {
+    font-size: 1.4rem;
+    line-height: 1;
+    padding-top: 1px;
+    text-align: center;
+  }
+
+  .event-body { }
+  .event-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    margin-bottom: 3px;
+    line-height: 1.3;
+  }
+  .event-detail {
+    font-size: 0.82rem;
+    color: var(--text-mid);
+    line-height: 1.55;
+  }
+
+  .event-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 99px;
+    margin-bottom: 5px;
+  }
+  .tag-bus { background: #e0f2fe; color: #0369a1; }
+  .tag-ausflug { background: #fef3c7; color: #92400e; }
+  .tag-kultur { background: #ede9fe; color: #5b21b6; }
+  .tag-freizeit { background: #dcfce7; color: #166534; }
+  .tag-essen { background: #fff1f2; color: #9f1239; }
+  .tag-wichtig { background: #fee2e2; color: #991b1b; }
+
+  .highlight-box {
+    background: linear-gradient(135deg, #fef3c7, #fff7ed);
+    border: 1px solid #fde68a;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-top: 6px;
+    font-size: 0.82rem;
+    color: #92400e;
+    line-height: 1.55;
+  }
+
+  /* === NOTICES === */
+  .notices {
+    margin-top: 48px;
+  }
+  .notice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .notice-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    border-top: 3px solid var(--coral);
+  }
+  .notice-card.blue { border-top-color: var(--azure); }
+  .notice-card.green { border-top-color: #22c55e; }
+  .notice-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+  }
+  .notice-card p {
+    font-size: 0.84rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+  .notice-icon { font-size: 1.6rem; margin-bottom: 8px; }
+
+  /* === FOOTER === */
+  footer {
+    background: var(--text-dark);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 36px 20px;
+    font-size: 0.82rem;
+    line-height: 1.8;
+  }
+  footer strong { color: white; }
+  .emergency-number {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(231, 111, 81, 0.2);
+    border: 1px solid rgba(231,111,81,0.4);
+    border-radius: 999px;
+    padding: 8px 20px;
+    color: #fca5a5;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 12px;
+  }
+
+  /* Animations */
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .day-card {
+    animation: fadeSlideUp 0.4s ease both;
+  }
+  .day-card:nth-child(1) { animation-delay: 0.05s; }
+  .day-card:nth-child(2) { animation-delay: 0.10s; }
+  .day-card:nth-child(3) { animation-delay: 0.15s; }
+  .day-card:nth-child(4) { animation-delay: 0.20s; }
+  .day-card:nth-child(5) { animation-delay: 0.25s; }
+  .day-card:nth-child(6) { animation-delay: 0.30s; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-badge">🏫 Städt. Apostelgymnasium Köln</div>
+  <h1>Côte d'Azur 2026 🌊</h1>
+  <p class="subtitle">Programmübersicht für Schüler*innen · Reise-Nr. 634249</p>
+  <div class="header-meta">
+    <div class="meta-chip">📅 14. – 20. Juni 2026</div>
+    <div class="meta-chip">📍 Grimaud / Côte d'Azur</div>
+    <div class="meta-chip">👥 34 Schüler + 3 Lehrer</div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main>
+
+  <!-- INFO BANNER -->
+  <div class="info-banner">
+    ℹ️ <strong>Unterkunft:</strong> Eurocamp Domaine des Naïades · 655 Chemin des Mûres, 83310 Grimaud, Frankreich · Tel.: +33-494-556780 &nbsp;|&nbsp; <strong>Ref.:</strong> 61210002
+  </div>
+
+  <!-- CAMP CARD -->
+  <div class="camp-card">
+    <h2>🚌 An- & Abreise auf einen Blick</h2>
+    <div class="camp-detail">
+      <span class="label">🟢 Hinfahrt (Abfahrt Köln)</span>
+      <span class="value">So. 14.06.2026 um ca. 20:00 Uhr</span>
+    </div>
+    <div class="camp-detail">
+      <span class="label">🏕️ Ankunft in Grimaud</span>
+      <span class="value">Mo. 15.06.2026 um ca. 11:00 Uhr</span>
+    </div>
+    <div class="camp-detail">
+      <span class="label">🔴 Rückfahrt (Abfahrt Grimaud)</span>
+      <span class="value">Fr. 19.06.2026 um ca. 16:00 Uhr</span>
+    </div>
+    <div class="camp-detail">
+      <span class="label">🏠 Ankunft in Köln</span>
+      <span class="value">Di. 30.06.2026 um ca. 07:00 Uhr</span>
+    </div>
+  </div>
+
+  <!-- DAYS SECTION -->
+  <h2 class="section-title">Tagesablauf</h2>
+
+  <!-- TAG 1: So. 14.06 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-number">
+        <div style="text-align:center">
+          <div class="tag">Tag</div>
+          <div class="num">1</div>
+        </div>
+      </div>
+      <div class="day-title-block">
+        <div class="weekday">Sonntag</div>
+        <div class="date">14. Juni 2026</div>
+        <div class="day-desc">Abreisetag — Nachtfahrt nach Süden</div>
+      </div>
+    </div>
+    <div class="events-list">
+      <div class="event">
+        <div class="event-time">20:00</div>
+        <div class="event-icon">🚌</div>
+        <div class="event-body">
+          <span class="event-tag tag-bus">Bus</span>
+          <div class="event-title">Abfahrt in Köln</div>
+          <div class="event-detail">Busfahrt ab 50931 Köln (inkl. Straßen- &amp; Parkgebühren) · Nachtfahrt · Ankunft am nächsten Morgen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAG 2: Mo. 15.06 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-number">
+        <div style="text-align:center">
+          <div class="tag">Tag</div>
+          <div class="num">2</div>
+        </div>
+      </div>
+      <div class="day-title-block">
+        <div class="weekday">Montag</div>
+        <div class="date">15. Juni 2026</div>
+        <div class="day-desc">Ankunft &amp; Ankommen am Eurocamp</div>
+      </div>
+    </div>
+    <div class="events-list">
+      <div class="event">
+        <div class="event-time"><span class="approx">ca.</span>11:00</div>
+        <div class="event-icon">🏕️</div>
+        <div class="event-body">
+          <span class="event-tag tag-freizeit">Ankunft</span>
+          <div class="event-title">Ankunft am Eurocamp Domaine des Naïades</div>
+          <div class="event-detail">Grimaud · Einchecken, Zelte/Bungalows beziehen, freie Zeit am Nachmittag</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAG 3: Di. 16.06 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-number">
+        <div style="text-align:center">
+          <div class="tag">Tag</div>
+          <div class="num">3</div>
+        </div>
+      </div>
+      <div class="day-title-block">
+        <div class="weekday">Dienstag</div>
+        <div class="date">16. Juni 2026</div>
+        <div class="day-desc">Wanderung &amp; Weinprobe</div>
+      </div>
+    </div>
+    <div class="events-list">
+      <div class="event">
+        <div class="event-time">09:00</div>
+        <div class="event-icon">🥾</div>
+        <div class="event-body">
+          <span class="event-tag tag-ausflug">Ausflug</span>
+          <div class="event-title">Wanderung Cap Taillat &amp; Weinprobe in Cogilin</div>
+          <div class="event-detail">Busausflug zu einer der schönsten Halbinseln der Côte d'Azur · anschließend Weinprobe in Cogilin (genaue Zeiten folgen)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAG 4: Mi. 17.06 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-number">
+        <div style="text-align:center">
+          <div class="tag">Tag</div>
+          <div class="num">4</div>
+        </div>
+      </div>
+      <div class="day-title-block">
+        <div class="weekday">Mittwoch</div>
+        <div class="date">17. Juni 2026</div>
+        <div class="day-desc">Stadtführung Nizza &amp; Mittagessen</div>
+      </div>
+    </div>
+    <div class="events-list">
+      <div class="event">
+        <div class="event-time">07:30</div>
+        <div class="event-icon">🚌</div>
+        <div class="event-body">
+          <span class="event-tag tag-bus">Abfahrt</span>
+          <div class="event-title">Empfohlene Abfahrtszeit nach Nizza</div>
+          <div class="event-detail">Fahrtdauer ca. 2 Stunden</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">10:00</div>
+        <div class="event-icon">🏛️</div>
+        <div class="event-body">
+          <span class="event-tag tag-kultur">Stadtführung</span>
+          <div class="event-title">Ca. 3,5-stündige Stadtführung durch Nizza</div>
+          <div class="event-detail">
+            <strong>Treffpunkt:</strong> Place Masséna, Fontaine du Soleil, 06000 Nice<br>
+            <strong>Endpunkt:</strong> Burgberg Park (Parc du Château)<br>
+            <strong>Guide:</strong> Christian Oehlerich &amp; Christa Ruff · 📞 +33 6 14 47 35 70<br>
+            <strong>Sprache:</strong> Deutsch · Keine Eintrittsgelder inklusive
+          </div>
+          <div class="highlight-box">⚠️ Bei Verspätung rechtzeitig den Guide kontaktieren! Der Ausstieg aus dem Bus erfolgt an der Avenue du XVème Corps (hinter Sporthalle Jean Bouin), ca. 25 Gehminuten vom Treffpunkt entfernt.</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">13:30</div>
+        <div class="event-icon">🍽️</div>
+        <div class="event-body">
+          <span class="event-tag tag-essen">Mittagessen</span>
+          <div class="event-title">2-Gang-Menü im Restaurant Hippopotamus Nizza</div>
+          <div class="event-detail">
+            Hauptgang + Dessert (ohne Getränke) · Dauer ca. 1 Stunde<br>
+            📍 Nähe Tram-Haltestelle Masséna (Linie 1)
+          </div>
+          <div class="highlight-box">⚠️ Getränke und extra Speisen werden direkt vor Ort bezahlt! · Bei mehr als 15 Minuten Verspätung verfällt die Reservierung.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAG 5: Do. 18.06 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-number" style="background: var(--coral);">
+        <div style="text-align:center">
+          <div class="tag">Tag</div>
+          <div class="num">5</div>
+        </div>
+      </div>
+      <div class="day-title-block">
+        <div class="weekday" style="color: var(--coral);">Donnerstag</div>
+        <div class="date">18. Juni 2026</div>
+        <div class="day-desc">Tagesausflug Monaco 🇲🇨</div>
+      </div>
+    </div>
+    <div class="events-list">
+      <div class="event">
+        <div class="event-time">07:30</div>
+        <div class="event-icon">🚌</div>
+        <div class="event-body">
+          <span class="event-tag tag-bus">Abfahrt</span>
+          <div class="event-title">Empfohlene Abfahrtszeit nach Monaco</div>
+          <div class="event-detail">Fahrtdauer ca. 2,5 Stunden</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">10:00</div>
+        <div class="event-icon">🇲🇨</div>
+        <div class="event-body">
+          <span class="event-tag tag-wichtig">Monaco</span>
+          <div class="event-title">Anmeldung &amp; Parkplatzgenehmigung Monaco</div>
+          <div class="event-detail">
+            <strong>Treffpunkt (Bus-Checkpoint):</strong> 62 Boulevard du Jardin Exotique, 98000 Monaco<br>
+            <strong>Empfohlene Parkplätze:</strong><br>
+            · Altstadt: Parking du Chemin des Pêcheurs (4 Avenue Saint-Martin)<br>
+            · Monte Carlo: Parking Grimaldi Forum (Rond-Point du Portier) — Gruppe steigt am Blvd. Louis II aus
+          </div>
+          <div class="highlight-box">💶 Parkpauschale: €70 pro Bus (wird vom Busfahrer übernommen). Falls Schüler*innen 18+ dabei sind, ggf. Differenz von €120 — Zahlung vor Ort mit Karte oder bar.</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">Tagsüber</div>
+        <div class="event-icon">🎰</div>
+        <div class="event-body">
+          <span class="event-tag tag-freizeit">Erkundung</span>
+          <div class="event-title">Freie Zeit in Monaco</div>
+          <div class="event-detail">Bummel durch die Altstadt, Monte-Carlo-Viertel, Hafen &amp; Formel-1-Strecke besichtigen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAG 6: Fr. 19.06 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-number">
+        <div style="text-align:center">
+          <div class="tag">Tag</div>
+          <div class="num">6</div>
+        </div>
+      </div>
+      <div class="day-title-block">
+        <div class="weekday">Freitag</div>
+        <div class="date">19. Juni 2026</div>
+        <div class="day-desc">Bootsfahrt St. Tropez &amp; Heimreise 🚢</div>
+      </div>
+    </div>
+    <div class="events-list">
+      <div class="event">
+        <div class="event-time">11:15</div>
+        <div class="event-icon">⛵</div>
+        <div class="event-body">
+          <span class="event-tag tag-ausflug">Bootsfahrt</span>
+          <div class="event-title">Bootsfahrt Port Grimaud → St. Tropez und zurück</div>
+          <div class="event-detail">
+            <strong>Treffpunkt:</strong> Quai des Transporteurs (zwischen Hôtel Giraglia &amp; la Capitainerie), 83310 Grimaud<br>
+            · Ca. 10 Gehminuten vom Busparkplatz<br>
+            · Hinfahrt: 11:15 Uhr · Rückfahrt: 15:40 Uhr<br>
+            · Überfahrt: ca. 25 Minuten pro Strecke
+          </div>
+          <div class="highlight-box">⚠️ Tickets müssen <strong>spätestens 15 Min. vor Abfahrt</strong> an der Kasse gegen Voucher abgeholt werden! · Sonstige Eintritte in St. Tropez separat bezahlen.</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time"><span class="approx">ca.</span>16:00</div>
+        <div class="event-icon">🚌</div>
+        <div class="event-body">
+          <span class="event-tag tag-bus">Heimreise</span>
+          <div class="event-title">Rückfahrt nach Köln (Nachtfahrt)</div>
+          <div class="event-detail">Abfahrt ab Grimaud · Ankunft in Köln: Di. 30.06.2026 um ca. 07:00 Uhr</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTICES -->
+  <div class="notices">
+    <h2 class="section-title">📋 Wichtige Hinweise</h2>
+    <div class="notice-grid">
+      <div class="notice-card">
+        <div class="notice-icon">🪪</div>
+        <h3>Ausweisdokument</h3>
+        <p>Jede*r muss einen <strong>gültigen Personalausweis oder Reisepass</strong> mitführen. Aktuell gibt es vermehrt Ausweiskontrollen an der Grenze.</p>
+      </div>
+      <div class="notice-card blue">
+        <div class="notice-icon">📋</div>
+        <h3>Klassenliste für Monaco</h3>
+        <p>Für den Buseinlass in Monaco wird eine <strong>am PC erstellte Klassenliste</strong> mit Namen &amp; Geburtsdaten sowie eine Schulbescheinigung (mit Stempel) benötigt.</p>
+      </div>
+      <div class="notice-card green">
+        <div class="notice-icon">🎫</div>
+        <h3>ÖPNV-Pass (optional)</h3>
+        <p>„Pass Sud Azur Explore" – 3-Tage-Pass für Bus, Tram &amp; TER-Züge in der Region Alpes-Maritimes. Ca. <strong>€30 (unter 18 J.)</strong> / €35 (ab 18 J.) — nur vor Ort erhältlich.</p>
+      </div>
+      <div class="notice-card">
+        <div class="notice-icon">💳</div>
+        <h3>Bezahlen vor Ort</h3>
+        <p>Getränke, Museumseintritte und Extras in den Restaurants müssen <strong>selbst bezahlt</strong> werden. Karte oder Bargeld (Euro) mitbringen!</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Organisiert von alpetour Touristische GmbH</strong> · Reise-Nr. 634249</p>
+  <p style="margin-top:6px">Ansprechpartner: Valerie Stadler · Sandra Faust · Melanie Ott · info@alpetour.de</p>
+  <div class="emergency-number">📞 24h-Notfallnummer: +49 171 3644008</div>
+  <p style="margin-top:16px; font-size:0.78rem; opacity:0.5">Programmänderungen vorbehalten · Stand: März 2026</p>
+</footer>
+
+</body>
+</html>
